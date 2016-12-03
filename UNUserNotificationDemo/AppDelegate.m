@@ -5,10 +5,12 @@
 //  Created by 符现超 on 2016/12/3.
 //  Copyright © 2016年 Zero.D.Saber. All rights reserved.
 //
+// https://onevcat.com/2016/08/notification/
 
 #import "AppDelegate.h"
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
 
@@ -17,9 +19,40 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //MARK: 注册通知
+    UNUserNotificationCenter *notificationCenter = [UNUserNotificationCenter currentNotificationCenter];
+    // 这几种注册类型在手机的setting中单个设置
+    UNAuthorizationOptions authorization = UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionCarPlay;
+    [notificationCenter requestAuthorizationWithOptions:authorization completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            // token registration（需要与APNs建立连接）
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+        }
+    }];
+    
+    [notificationCenter getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+        NSLog(@"UNNotificationSettings ==> %@", settings);
+    }];
+    
     return YES;
 }
 
+#pragma mark - UNUserNotificationCenterDelegate
+// 13分钟
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    NSLog(@"将要弹出通知");
+    NSDictionary *userInfo = notification.request.content.userInfo;
+}
+
+// 本地、远程通知点击都会进入这个方法
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+    NSLog(@"收到推送通知");
+    NSDictionary *userInfo = response.notification.request.content.userInfo;
+    completionHandler();
+}
+
+#pragma mark -
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
