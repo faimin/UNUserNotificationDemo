@@ -6,6 +6,7 @@
 //  Copyright © 2016年 Zero.D.Saber. All rights reserved.
 //
 // https://onevcat.com/2016/08/notification/
+// https://github.com/liuyanhongwl/ios_common/blob/master/files/ios10_usernotification.md#%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90
 
 #import "AppDelegate.h"
 #import <UserNotifications/UserNotifications.h>
@@ -24,6 +25,7 @@
     UNUserNotificationCenter *notificationCenter = [UNUserNotificationCenter currentNotificationCenter];
     // 这几种注册类型在手机的setting中单个设置
     UNAuthorizationOptions authorization = UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionCarPlay;
+    // 获取权限
     [notificationCenter requestAuthorizationWithOptions:authorization completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
             // token registration（需要与APNs建立连接）
@@ -31,6 +33,7 @@
         }
     }];
     
+    // 获取用户授权相关信息
     [notificationCenter getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
         NSLog(@"UNNotificationSettings ==> %@", settings);
     }];

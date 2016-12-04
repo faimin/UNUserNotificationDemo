@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05C4B3401DF319D80087A2E0 /* LocalNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C4B33F1DF319D80087A2E0 /* LocalNotificationController.m */; };
+		05C4B3431DF31A000087A2E0 /* RemoteNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C4B3421DF31A000087A2E0 /* RemoteNotificationController.m */; };
 		BC5540CD1DF28CF7001D7FFF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5540CC1DF28CF7001D7FFF /* main.m */; };
 		BC5540D01DF28CF7001D7FFF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5540CF1DF28CF7001D7FFF /* AppDelegate.m */; };
 		BC5540D61DF28CF7001D7FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5540D41DF28CF7001D7FFF /* Main.storyboard */; };
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05C4B33E1DF319D80087A2E0 /* LocalNotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNotificationController.h; sourceTree = "<group>"; };
+		05C4B33F1DF319D80087A2E0 /* LocalNotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNotificationController.m; sourceTree = "<group>"; };
+		05C4B3411DF31A000087A2E0 /* RemoteNotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteNotificationController.h; sourceTree = "<group>"; };
+		05C4B3421DF31A000087A2E0 /* RemoteNotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteNotificationController.m; sourceTree = "<group>"; };
 		BC5540C81DF28CF7001D7FFF /* UNUserNotificationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNUserNotificationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5540CC1DF28CF7001D7FFF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC5540CE1DF28CF7001D7FFF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -144,6 +150,10 @@
 			children = (
 				BC5540FF1DF28D4F001D7FFF /* ViewController.h */,
 				BC5541001DF28D4F001D7FFF /* ViewController.m */,
+				05C4B33E1DF319D80087A2E0 /* LocalNotificationController.h */,
+				05C4B33F1DF319D80087A2E0 /* LocalNotificationController.m */,
+				05C4B3411DF31A000087A2E0 /* RemoteNotificationController.h */,
+				05C4B3421DF31A000087A2E0 /* RemoteNotificationController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -283,6 +293,8 @@
 			files = (
 				BC5541011DF28D4F001D7FFF /* ViewController.m in Sources */,
 				BC5540D01DF28CF7001D7FFF /* AppDelegate.m in Sources */,
+				05C4B3401DF319D80087A2E0 /* LocalNotificationController.m in Sources */,
+				05C4B3431DF31A000087A2E0 /* RemoteNotificationController.m in Sources */,
 				BC5540CD1DF28CF7001D7FFF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +529,7 @@
 				BC5540F71DF28CF8001D7FFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC5540F81DF28CF8001D7FFF /* Build configuration list for PBXNativeTarget "UNUserNotificationDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +538,7 @@
 				BC5540FA1DF28CF8001D7FFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC5540FB1DF28CF8001D7FFF /* Build configuration list for PBXNativeTarget "UNUserNotificationDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +547,7 @@
 				BC5540FD1DF28CF8001D7FFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  LocalNotificationController.h
 //  UNUserNotificationDemo
 //
 //  Created by 符现超 on 2016/12/3.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
-
+@interface LocalNotificationController : UIViewController
 
 @end
-

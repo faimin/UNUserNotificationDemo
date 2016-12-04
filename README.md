@@ -1,4 +1,4 @@
-﻿#WWDC2016 Session 707 - Introduction to Notifications
+#WWDC2016 Session 707 - Introduction to Notifications
 > 视频地址：[传送门](https://developer.apple.com/videos/play/wwdc2016/707/)
 字幕：[传送门](http://asciiwwdc.com/2016/sessions/707)
 
@@ -23,6 +23,8 @@
 
 
 
+
 ## 推荐文章：
 + [活见久的重构 - iOS 10 UserNotification 框架解析](http://onevcat.com/2016/08/notification/)
 + [WWDC2016 Session笔记 - iOS 10  推送Notification新特性](http://www.jianshu.com/p/9b720efe3779)
+
