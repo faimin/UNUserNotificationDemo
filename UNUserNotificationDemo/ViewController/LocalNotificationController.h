@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, TrigerType) {
+    TrigerType_TimeInternal,
+    TrigerType_Calendar,
+    TrigerType_Location
+};
+
 @interface LocalNotificationController : UIViewController
+
+@property (nonatomic, assign) TrigerType trigerType;
 
 @end

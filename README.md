@@ -21,10 +21,28 @@
 ### 进入正题
 应用先注册通知来获取用户的授权（本地通知也需要）。
 
+🍎提供了4种类型的通知触发器：
 
++ UNPushNotificationTrigger 触发APNS服务，系统自动设置（这是区分本地通知和远程通知的标识）
++ UNTimeIntervalNotificationTrigger 间隔多长时间后触发（eg.每隔2分钟发送一次通知）
++ UNCalendarNotificationTrigger 在将来指定的某一天触发（每天的某个时刻发送通知）
++ UNLocationNotificationTrigger 根据当前所在位置（离开或进入某一区域时触发通知）
 
+#### Service Extension
+> You will get a short execution time, which means this is not for long background running tasks.
+
+在展示之前我们可以利用`Service Extensions`，修改`notification content`
+
+#### Demo
+[https://github.com/onevcat/UserNotificationDemo](https://github.com/onevcat/UserNotificationDemo)
+
+[https://github.com/liuyanhongwl/UserNotification](https://github.com/liuyanhongwl/UserNotification)
+
+####疑问
+`removePendingNotificationRequestsWithIdentifiers`与`removeDeliveredNotificationsWithIdentifiers`的区别???
 
 ## 推荐文章：
 + [活见久的重构 - iOS 10 UserNotification 框架解析](http://onevcat.com/2016/08/notification/)
 + [WWDC2016 Session笔记 - iOS 10  推送Notification新特性](http://www.jianshu.com/p/9b720efe3779)
++ [iOS10 UserNotification](https://github.com/liuyanhongwl/ios_common/blob/master/files/ios10_usernotification.md#%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90)
 

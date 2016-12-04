@@ -23,6 +23,7 @@
     
     //MARK: 注册通知
     UNUserNotificationCenter *notificationCenter = [UNUserNotificationCenter currentNotificationCenter];
+    //notificationCenter.delegate = self;
     // 这几种注册类型在手机的setting中单个设置
     UNAuthorizationOptions authorization = UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionCarPlay;
     // 获取权限
@@ -30,28 +31,48 @@
         if (granted) {
             // token registration（需要与APNs建立连接）
             [[UIApplication sharedApplication] registerForRemoteNotifications];
+            
+            // 获取用户授权的相关信息
+            [notificationCenter getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+                NSLog(@"UNNotificationSettings ==> %@", settings);
+            }];
+        } else {
+            NSLog(@"不允许注册通知");
         }
-    }];
-    
-    // 获取用户授权相关信息
-    [notificationCenter getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
-        NSLog(@"UNNotificationSettings ==> %@", settings);
     }];
     
     return YES;
 }
 
 #pragma mark - UNUserNotificationCenterDelegate
-// 13分钟
+// 应用在当前显示的时候调用此方法
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
     NSLog(@"将要弹出通知");
     NSDictionary *userInfo = notification.request.content.userInfo;
+    
+    //  if you don't want in-app presentation, you just don't pass any parameters. 
+    UNNotificationPresentationOptions type = UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert;
+    completionHandler(type);
 }
 
 // 本地、远程通知点击都会进入这个方法
+/// 此方法可以用来判断用户是否是通过点击通知进入的app，是本地通知还是远程通知
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     NSLog(@"收到推送通知");
     NSDictionary *userInfo = response.notification.request.content.userInfo;
+    
+    NSString *identifier = response.actionIdentifier;
+    if ([identifier isEqualToString:UNNotificationDefaultActionIdentifier]) {
+        NSLog(@"通过通知打开的app");
+    }
+    
+    UNNotificationTrigger *triger = response.notification.request.trigger;
+    if ([triger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        NSLog(@"远程通知");
+    } else {
+        NSLog(@"本地通知");
+    }
+    
     completionHandler();
 }
 
