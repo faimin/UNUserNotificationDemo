@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		05C4B3401DF319D80087A2E0 /* LocalNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C4B33F1DF319D80087A2E0 /* LocalNotificationController.m */; };
 		05C4B3431DF31A000087A2E0 /* RemoteNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C4B3421DF31A000087A2E0 /* RemoteNotificationController.m */; };
+		05C4B34C1DF46FDB0087A2E0 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C4B34B1DF46FDB0087A2E0 /* NotificationService.m */; };
+		05C4B3501DF46FDB0087A2E0 /* ServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 05C4B3481DF46FDB0087A2E0 /* ServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BC5540CD1DF28CF7001D7FFF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5540CC1DF28CF7001D7FFF /* main.m */; };
 		BC5540D01DF28CF7001D7FFF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5540CF1DF28CF7001D7FFF /* AppDelegate.m */; };
 		BC5540D61DF28CF7001D7FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5540D41DF28CF7001D7FFF /* Main.storyboard */; };
@@ -20,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		05C4B34E1DF46FDB0087A2E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC5540C01DF28CF7001D7FFF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05C4B3471DF46FDB0087A2E0;
+			remoteInfo = ServiceExtension;
+		};
 		BC5540E21DF28CF8001D7FFF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC5540C01DF28CF7001D7FFF /* Project object */;
@@ -36,11 +45,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		05C4B3541DF46FDB0087A2E0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				05C4B3501DF46FDB0087A2E0 /* ServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		05C4B33E1DF319D80087A2E0 /* LocalNotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNotificationController.h; sourceTree = "<group>"; };
 		05C4B33F1DF319D80087A2E0 /* LocalNotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNotificationController.m; sourceTree = "<group>"; };
 		05C4B3411DF31A000087A2E0 /* RemoteNotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteNotificationController.h; sourceTree = "<group>"; };
 		05C4B3421DF31A000087A2E0 /* RemoteNotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteNotificationController.m; sourceTree = "<group>"; };
+		05C4B3481DF46FDB0087A2E0 /* ServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		05C4B34A1DF46FDB0087A2E0 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		05C4B34B1DF46FDB0087A2E0 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		05C4B34D1DF46FDB0087A2E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC5540C81DF28CF7001D7FFF /* UNUserNotificationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNUserNotificationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5540CC1DF28CF7001D7FFF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC5540CE1DF28CF7001D7FFF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +87,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		05C4B3451DF46FDB0087A2E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC5540C51DF28CF7001D7FFF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -84,12 +118,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05C4B3491DF46FDB0087A2E0 /* ServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				05C4B34A1DF46FDB0087A2E0 /* NotificationService.h */,
+				05C4B34B1DF46FDB0087A2E0 /* NotificationService.m */,
+				05C4B34D1DF46FDB0087A2E0 /* Info.plist */,
+			);
+			path = ServiceExtension;
+			sourceTree = "<group>";
+		};
 		BC5540BF1DF28CF7001D7FFF = {
 			isa = PBXGroup;
 			children = (
 				BC5540CA1DF28CF7001D7FFF /* UNUserNotificationDemo */,
 				BC5540E41DF28CF8001D7FFF /* UNUserNotificationDemoTests */,
 				BC5540EF1DF28CF8001D7FFF /* UNUserNotificationDemoUITests */,
+				05C4B3491DF46FDB0087A2E0 /* ServiceExtension */,
 				BC5540C91DF28CF7001D7FFF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +145,7 @@
 				BC5540C81DF28CF7001D7FFF /* UNUserNotificationDemo.app */,
 				BC5540E11DF28CF8001D7FFF /* UNUserNotificationDemoTests.xctest */,
 				BC5540EC1DF28CF8001D7FFF /* UNUserNotificationDemoUITests.xctest */,
+				05C4B3481DF46FDB0087A2E0 /* ServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,6 +207,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		05C4B3471DF46FDB0087A2E0 /* ServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05C4B3531DF46FDB0087A2E0 /* Build configuration list for PBXNativeTarget "ServiceExtension" */;
+			buildPhases = (
+				05C4B3441DF46FDB0087A2E0 /* Sources */,
+				05C4B3451DF46FDB0087A2E0 /* Frameworks */,
+				05C4B3461DF46FDB0087A2E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ServiceExtension;
+			productName = ServiceExtension;
+			productReference = 05C4B3481DF46FDB0087A2E0 /* ServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		BC5540C71DF28CF7001D7FFF /* UNUserNotificationDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC5540F51DF28CF8001D7FFF /* Build configuration list for PBXNativeTarget "UNUserNotificationDemo" */;
@@ -168,10 +231,12 @@
 				BC5540C41DF28CF7001D7FFF /* Sources */,
 				BC5540C51DF28CF7001D7FFF /* Frameworks */,
 				BC5540C61DF28CF7001D7FFF /* Resources */,
+				05C4B3541DF46FDB0087A2E0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				05C4B34F1DF46FDB0087A2E0 /* PBXTargetDependency */,
 			);
 			name = UNUserNotificationDemo;
 			productName = UNUserNotificationDemo;
@@ -223,6 +288,10 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Zero.D.Saber;
 				TargetAttributes = {
+					05C4B3471DF46FDB0087A2E0 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
 					BC5540C71DF28CF7001D7FFF = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
@@ -255,11 +324,19 @@
 				BC5540C71DF28CF7001D7FFF /* UNUserNotificationDemo */,
 				BC5540E01DF28CF8001D7FFF /* UNUserNotificationDemoTests */,
 				BC5540EB1DF28CF8001D7FFF /* UNUserNotificationDemoUITests */,
+				05C4B3471DF46FDB0087A2E0 /* ServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		05C4B3461DF46FDB0087A2E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC5540C61DF28CF7001D7FFF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,6 +364,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		05C4B3441DF46FDB0087A2E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05C4B34C1DF46FDB0087A2E0 /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC5540C41DF28CF7001D7FFF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +403,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		05C4B34F1DF46FDB0087A2E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05C4B3471DF46FDB0087A2E0 /* ServiceExtension */;
+			targetProxy = 05C4B34E1DF46FDB0087A2E0 /* PBXContainerItemProxy */;
+		};
 		BC5540E31DF28CF8001D7FFF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BC5540C71DF28CF7001D7FFF /* UNUserNotificationDemo */;
@@ -350,6 +440,28 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		05C4B3511DF46FDB0087A2E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Zero.UNUserNotificationDemo.ServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		05C4B3521DF46FDB0087A2E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Zero.UNUserNotificationDemo.ServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		BC5540F31DF28CF8001D7FFF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -513,6 +625,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		05C4B3531DF46FDB0087A2E0 /* Build configuration list for PBXNativeTarget "ServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05C4B3511DF46FDB0087A2E0 /* Debug */,
+				05C4B3521DF46FDB0087A2E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		BC5540C31DF28CF7001D7FFF /* Build configuration list for PBXProject "UNUserNotificationDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

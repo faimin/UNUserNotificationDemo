@@ -24,6 +24,7 @@ static NSString * const LocalRegionId = @"LocalRegionId";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self contentNotification];
+    [self action];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,8 +75,8 @@ static NSString * const LocalRegionId = @"LocalRegionId";
 
 // 定时器触发
 - (UNNotificationTrigger *)timeIntervalTriger {
-    // 每5m通知一次(从你创建的时候开始计算)
-    UNTimeIntervalNotificationTrigger *triger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:YES];
+    // 5秒后通知(从你创建的时候开始计算)
+    UNTimeIntervalNotificationTrigger *triger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
     return triger;
 }
 
