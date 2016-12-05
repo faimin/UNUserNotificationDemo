@@ -23,8 +23,10 @@ static NSString * const LocalRegionId = @"LocalRegionId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self notificationAction];
+    
     [self contentNotification];
-    [self action];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,10 +40,20 @@ static NSString * const LocalRegionId = @"LocalRegionId";
     UNMutableNotificationContent *content = ({
         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
         content.title = @"第一条推送标题";
-        content.subtitle = @"推送副标题";
-        content.body = @"详细内容xxxxxxxxxxx";
-        content.badge = @1;
+        content.subtitle = @"2016年12月05日15:24:19  2016-12-05 15:24:24";
+        content.body = @"iOS 10 中以前杂乱的和通知相关的 API 都被统一了，现在开发者可以使用独立的 UserNotifications.framework 来集中管理和使用 iOS 系统中通知的功能。在此基础上，Apple 还增加了撤回单条通知，更新已展示通知，中途修改通知内容，在通知中展示图片视频，自定义通知 UI 等一系列新功能，非常强大。";
+        //content.badge = @10;
         content.sound = [UNNotificationSound defaultSound];
+        
+        content.categoryIdentifier = @"ZD_Category";
+        
+        UNNotificationAttachment *attachment = ({
+            NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"hami" ofType:@"gif"];
+            NSError * __autoreleasing *error = nil;
+            UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"attachment" URL:[NSURL fileURLWithPath:imagePath] options:nil error:error];
+            attachment;
+        });
+        content.attachments = @[attachment];
         content;
     });
     
@@ -84,7 +96,7 @@ static NSString * const LocalRegionId = @"LocalRegionId";
 - (UNNotificationTrigger *)canlendarTriger {
     NSDateComponents *component = ({
         NSDateComponents *component = [[NSDateComponents alloc] init];
-        component.weekday = 2;
+        component.weekday = 2; //周一
         component.hour = 17;
         component.minute = 30;
         component;
@@ -125,24 +137,29 @@ static NSString * const LocalRegionId = @"LocalRegionId";
 
 #pragma mark - Notification Action
 
-- (void)action {
-    UNNotificationAction *action = [UNNotificationAction actionWithIdentifier:@"notificationAction" title:@"ActionTitle" options:UNNotificationActionOptionAuthenticationRequired | UNNotificationActionOptionDestructive];
-    UNNotificationCategory *category = [UNNotificationCategory categoryWithIdentifier:@"category" actions:@[action] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
-    [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithArray:@[category]]];
+- (void)notificationAction {
+    //
+    UNNotificationAction *action1 = [UNNotificationAction actionWithIdentifier:@"action1" title:@"需要解锁" options:UNNotificationActionOptionAuthenticationRequired];
+    UNNotificationAction *action2 = [UNNotificationAction actionWithIdentifier:@"action2" title:@"启动app到前台显示" options:UNNotificationActionOptionForeground];
+    UNNotificationCategory *category1 = [UNNotificationCategory categoryWithIdentifier:@"category1" actions:@[action1, action2] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+    //
+    UNNotificationAction *action3 = [UNNotificationAction actionWithIdentifier:@"action3" title:@"红色高亮" options:UNNotificationActionOptionDestructive];
+    UNNotificationAction *action4 = [UNNotificationAction actionWithIdentifier:@"action4" title:@"启动app到前台显示" options:UNNotificationActionOptionAuthenticationRequired];
+    UNNotificationCategory *category2 = [UNNotificationCategory categoryWithIdentifier:@"category2" actions:@[action3, action4] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
     
+    // TextInput
+    UNTextInputNotificationAction *action5 = [UNTextInputNotificationAction actionWithIdentifier:@"action5" title:@"到前台来显示" options:UNNotificationActionOptionForeground textInputButtonTitle:@"回复" textInputPlaceholder:@"发表你的神评论~~~"];
+    UNNotificationCategory *category3 = [UNNotificationCategory categoryWithIdentifier:@"category3" actions:@[action5] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+    
+    // 添加category
+    [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithArray:@[category1, category2, category3]]];
 }
 
 
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
+
+
+
