@@ -74,7 +74,7 @@ body                //推送内容body
 categoryIdentifier  //category标识，操作策略
 launchImageName     //点击通知进入应用的启动图
 sound               //声音
-userInfo 			   //附带通知内容
+userInfo 			//附带通知内容
 ```
 
 初始化方法：
