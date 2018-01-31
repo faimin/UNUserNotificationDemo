@@ -47,6 +47,7 @@ static NSString * const LocalRegionId = @"LocalRegionId";
         
         content.categoryIdentifier = @"ZD_Category";
         
+        // 通知中携带的附件,支持图片(10M)、音频(5M)、视频(50M)
         UNNotificationAttachment *attachment = ({
             NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"hami" ofType:@"gif"];
             NSError * __autoreleasing *error = nil;
@@ -87,7 +88,7 @@ static NSString * const LocalRegionId = @"LocalRegionId";
 
 // 定时器触发
 - (UNNotificationTrigger *)timeIntervalTriger {
-    // 5秒后通知(从你创建的时候开始计算)
+    // 5秒后通知(从你创建的时候开始计算,而且timeInterval必须是一个大于0的数)
     UNTimeIntervalNotificationTrigger *triger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
     return triger;
 }

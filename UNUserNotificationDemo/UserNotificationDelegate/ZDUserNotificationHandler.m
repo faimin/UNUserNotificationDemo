@@ -16,22 +16,20 @@
 @implementation ZDUserNotificationHandler
 
 #pragma mark - Singleton
-static ZDUserNotificationHandler *notificationHandler = nil;
+
 + (instancetype)shareInstance {
+    static ZDUserNotificationHandler *notificationHandler = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (!notificationHandler) {
-            notificationHandler = [[ZDUserNotificationHandler alloc] init];
+            notificationHandler = [[super allocWithZone:NULL] init];
         }
     });
     return notificationHandler;
 }
 
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
-    if (!notificationHandler) {
-        notificationHandler = [super allocWithZone:zone];
-    }
-    return notificationHandler;
+    return [self shareInstance];
 }
 
 #pragma amrk - lifeCycle
@@ -63,13 +61,12 @@ static ZDUserNotificationHandler *notificationHandler = nil;
             NSLog(@"不允许注册通知");
         }
     }];
-
 }
 
 #pragma mark - UNUserNotificationCenterDelegate
 // 应用在前台显示的时候点击收到的通知后，调用此方法
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     __unused NSDictionary *userInfo = notification.request.content.userInfo;
     
     //  if you don't want in-app presentation, you just don't pass any parameters.
@@ -79,14 +76,16 @@ static ZDUserNotificationHandler *notificationHandler = nil;
 
 // 本地、远程通知点击都会进入这个方法
 // 应用被杀掉或者在后台时，点击通知后调用的方法
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     __unused NSDictionary *userInfo = response.notification.request.content.userInfo;
     
     // 此标识可以用来判断用户是否是通过点击通知进入的app，是本地通知还是远程通知
     NSString *identifier = response.actionIdentifier;
     if ([identifier isEqualToString:UNNotificationDefaultActionIdentifier]) {
         NSLog(@"通过通知打开的app");
+    } else if ([identifier isEqualToString:UNNotificationDismissActionIdentifier]) {
+        NSLog(@"dismiss这个通知");
     }
     
     UNNotificationTrigger *triger = response.notification.request.trigger;

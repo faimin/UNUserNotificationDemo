@@ -30,15 +30,17 @@
 {
     //ios10新版文案多样推送
     /*
-     {
-     "aps":{
-     "alert":{
-     "title":"Testing.. (52)",
-     "subtitle":"subtitle",
-     "body":"body"},
-     "badge":1,
-     "sound":"default"}
-     }
+    {
+        "aps":{
+            "alert":{
+                "title":"Testing.. (52)",
+                "subtitle":"subtitle",
+                "body":"body"
+            },
+            "badge":1,
+            "sound":"default"
+        }
+    }
      */
 }
 
@@ -46,12 +48,14 @@
 {
     //后台做一些操作增加字段："content-available":1
     /*
-     {
-     "aps":{"alert":"Testing.. (34)",
-     "badge":1,
-     "sound":"default",
-     "content-available":1}
-     }
+    {
+        "aps":{
+            "alert":"Testing.. (34)",
+            "badge":1,
+            "sound":"default",
+            "content-available":1
+        }
+    }
      */
 }
 

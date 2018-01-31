@@ -7,6 +7,7 @@
 //
 // https://onevcat.com/2016/08/notification/
 // https://github.com/liuyanhongwl/ios_common/blob/master/files/ios10_usernotification.md#%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90
+// https://www.tuicool.com/articles/UBRNzmq && https://www.jianshu.com/p/9cf65105364d
 
 #import "AppDelegate.h"
 #import "ZDUserNotificationHandler.h"
