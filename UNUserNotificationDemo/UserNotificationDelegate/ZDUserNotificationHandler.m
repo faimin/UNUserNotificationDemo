@@ -64,7 +64,7 @@
 }
 
 #pragma mark - UNUserNotificationCenterDelegate
-// 应用在前台显示的时候点击收到的通知后，调用此方法
+// 如果实现下面这个代理方法,则应用在前台的时候也会收到通知。如果不想收到就别实现下面的协议,或者completeHandler回调时传空参数
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     __unused NSDictionary *userInfo = notification.request.content.userInfo;
