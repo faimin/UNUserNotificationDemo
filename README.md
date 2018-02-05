@@ -1,28 +1,29 @@
 #WWDC2016 Session 707 - Introduction to Notifications
+
 > 视频地址：[传送门](https://developer.apple.com/videos/play/wwdc2016/707/) </br>
 > 字幕：[传送门](http://asciiwwdc.com/2016/sessions/707)
 
 ----------
-#### 现有通知API的缺点：
-1、本地通知和远程通知用的是两套回调方法
 
-2、可控性差（eg.无法控修改已在调度队列中的通知，换句话说就是发出去的通知泼出去的水)
+#### 现有通知API的缺点：
+
+1. 本地通知和远程通知用的是两套回调方法
+2. 可控性差（eg.无法控修改已在调度队列中的通知，换句话说就是发出去的通知泼出去的水)
 
 ![现有通知的缺点](https://github.com/faimin/UNUserNotificationDemo/blob/master/NotificationSnapImages/%E7%8E%B0%E6%9C%89%E9%80%9A%E7%9F%A5API%E7%BC%BA%E7%82%B9.png)
+
 #### 新通知框架的优点：
-1、与旧API相似
 
-2、支持的内容更丰富（eg.图片、附件）
+1. 与旧API相似
+2. 支持的内容更丰富（eg.图片、附件）
+3. 本地与远程通知统一处理，减少了重复代码
+4. 更容易管理
+5. 可以在扩展中处理通知，比如替换`content`，下载附件
+6. 支持🍎多平台（iOS、watchOS、tvOS）
+7. 支持删除正在显示的本地通知（旧有API只支持删除队列中还未发出去的通知）
 
-3、本地与远程通知统一处理，减少了重复代码
 
-4、更容易管理
-
-5、可以在扩展中处理通知，比如替换`content`，下载附件
-
-6、支持🍎多平台（iOS、watchOS、tvOS）
-
-以前是通过别的设备建立连接，然后通知才能转到watch上，现在可以在watchOS上添加本地通知了，比如手机上装了一个锻炼app，但是锻炼时没带着手机，戴着watch呢，当用户完成训练时依然能够发送完成训练的通知。
+以前是通过别的设备建立连接，然后通知才能转到`watch`上，现在可以在`watchOS`上添加本地通知了，比如手机上装了一个锻炼`app`，但是锻炼时没带着手机，戴着`watch`呢，当用户完成训练时依然能够发送完成训练的通知。
 
 > 至于如何与watchOS之间进行通知，🍎没说，只是说他们是利用`Quick Interaction Techniques`实现的。
 
@@ -55,17 +56,18 @@
 
 > Note：在iOS10中需要在`target -> Capabilties`中打开`Push Notifications`选项，否则会出现通知注册失败的问题，错误日志如下：
 
-```
+```objc
 2016-12-05 12:06:33.243278 UNUserNotificationDemo[1053:951498] You've implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
 2016-12-05 12:06:40.703255 UNUserNotificationDemo[1053:951498] 注册通知失败 : 未找到应用程序的“aps-environment”的授权字符串
 2016-12-05 12:06:40.707410 UNUserNotificationDemo[1053:951750] UNNotificationSettings ==> <UNNotificationSettings: 0x17408e560; authorizationStatus: Authorized, notificationCenterSetting: Enabled, soundSetting: Enabled, badgeSetting: Enabled, lockScreenSetting: Enabled, alertSetting: NotSupported, carPlaySetting: Enabled, alertStyle: Banner>
 ```
+
 ![打开通知选项](https://github.com/faimin/UNUserNotificationDemo/blob/master/NotificationSnapImages/Push%20Notifications.png)
 ![Background Models](https://github.com/faimin/UNUserNotificationDemo/blob/master/NotificationSnapImages/Background%20Models.png)
 
 #### 通知内容
 
-```
+```objc
 attachments         //附件
 badge               //数字标志
 title               //推送内容标题
@@ -143,7 +145,7 @@ content.sound = [UNNotificationSound defaultSound];
     return triger;
 }
 
-//日期触发
+// 日期触发
 - (UNNotificationTrigger *)canlendarTriger {
     NSDateComponents *component = ({
         NSDateComponents *component = [[NSDateComponents alloc] init];
@@ -156,7 +158,7 @@ content.sound = [UNNotificationSound defaultSound];
     return triger;
 }
 
-//位置触发
+// 位置触发
 - (UNNotificationTrigger *)locationNotification {
     CLRegion *region = ({
         CLLocationCoordinate2D center = CLLocationCoordinate2DMake(100, 100);
@@ -174,12 +176,12 @@ content.sound = [UNNotificationSound defaultSound];
 
 action：设置标识（identifier）、按钮标题（title）、按钮选项（options）
 
-```
+```objc
 // API
 + (instancetype)actionWithIdentifier:(NSString *)identifier title:(NSString *)title options:(UNNotificationActionOptions)options;
 ```
 
-```
+```objc
 options:
 UNNotificationActionOptionAuthenticationRequired  执行前需要解锁确认
 UNNotificationActionOptionDestructive  显示高亮（红色）
@@ -193,11 +195,11 @@ action 有2种类型：
 
 category：设置标识（identifier）、actions、intentIdentifiers（需要填写你想要添加到哪个推送消息的 id）、策略选项（options）
 
-```
+```objc
 + (instancetype)categoryWithIdentifier:(NSString *)identifier actions:(NSArray<UNNotificationAction *> *)actions intentIdentifiers:(NSArray<NSString *> *)intentIdentifiers options:(UNNotificationCategoryOptions)options;
 ```
 
-```
+```objc
 options
 UNNotificationCategoryOptionNone
 UNNotificationCategoryOptionCustomDismissAction  当清除当前通知时，会走center的delegate。
@@ -206,7 +208,7 @@ UNNotificationCategoryOptionAllowInCarPlay  适用于行车模式
 
 具体使用
 
-```
+```objc
 UNNotificationAction *action1 = [UNNotificationAction actionWithIdentifier:@"action1" title:@"需要解锁" options:UNNotificationActionOptionAuthenticationRequired];
 UNNotificationAction *action2 = [UNNotificationAction actionWithIdentifier:@"action2" title:@"启动app" options:UNNotificationActionOptionForeground];
 //给category设置action
@@ -233,6 +235,7 @@ content.attachments = @[attachment];
 > 如果想要指定操作策略，需要添加`"category":"categoryId"`字段
 
 #### Service Extension
+
 在通知展示之前，我们可以利用`Service Extensions`，下载通知中带的附件，但是需要注意的是：这个功能🍎只提供给了我们很短的时间来操作附件，原话如下：
 > You will get a short execution time, which means this is not for long background running tasks.
 
@@ -240,14 +243,13 @@ content.attachments = @[attachment];
 
 
 #### Demo
+
 [https://github.com/onevcat/UserNotificationDemo](https://github.com/onevcat/UserNotificationDemo)
 
 [https://github.com/liuyanhongwl/UserNotification](https://github.com/liuyanhongwl/UserNotification)
 
-####疑问
-`removePendingNotificationRequestsWithIdentifiers`与`removeDeliveredNotificationsWithIdentifiers`的区别???
-
 ## 推荐文章：
+
 + [活见久的重构 - iOS 10 UserNotification 框架解析](http://onevcat.com/2016/08/notification/)
 + [WWDC2016 Session笔记 - iOS 10  推送Notification新特性](http://www.jianshu.com/p/9b720efe3779)
 + [iOS10 UserNotification](https://github.com/liuyanhongwl/ios_common/blob/master/files/ios10_usernotification.md#%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90)
