@@ -139,11 +139,11 @@ static NSString * const LocalRegionId = @"LocalRegionId";
 #pragma mark - Notification Action
 
 - (void)notificationAction {
-    //
+    // category1
     UNNotificationAction *action1 = [UNNotificationAction actionWithIdentifier:@"action1" title:@"需要解锁" options:UNNotificationActionOptionAuthenticationRequired];
     UNNotificationAction *action2 = [UNNotificationAction actionWithIdentifier:@"action2" title:@"启动app到前台显示" options:UNNotificationActionOptionForeground];
-    UNNotificationCategory *category1 = [UNNotificationCategory categoryWithIdentifier:@"category1" actions:@[action1, action2] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
-    //
+    UNNotificationCategory *category1 = [UNNotificationCategory categoryWithIdentifier:@"category1" actions:@[action1, action2] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];// UNNotificationCategoryOptionNone
+    // category2
     UNNotificationAction *action3 = [UNNotificationAction actionWithIdentifier:@"action3" title:@"红色高亮" options:UNNotificationActionOptionDestructive];
     UNNotificationAction *action4 = [UNNotificationAction actionWithIdentifier:@"action4" title:@"启动app到前台显示" options:UNNotificationActionOptionAuthenticationRequired];
     UNNotificationCategory *category2 = [UNNotificationCategory categoryWithIdentifier:@"category2" actions:@[action3, action4] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];

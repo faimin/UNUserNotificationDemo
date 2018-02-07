@@ -813,6 +813,7 @@
 				BC3F74601DF545CA00DAC54F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC5540C31DF28CF7001D7FFF /* Build configuration list for PBXProject "UNUserNotificationDemo" */ = {
 			isa = XCConfigurationList;

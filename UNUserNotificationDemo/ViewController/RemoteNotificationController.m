@@ -63,9 +63,11 @@
 {
     //去掉alert、badge、sound字段实现静默推送，增加增加字段："content-available":1，也可以在后台做一些事情。
     /*
-     {
-     "aps":{"content-available":1}
-     }
+    {
+        "aps":{
+            "content-available":1
+        }
+    }
      */
 }
 
@@ -73,12 +75,14 @@
 {
     //指定操作策略，需增加字段："category":"categoryId"
     /*
-     {
-     "aps":{"alert":"Testing.. (34)",
-     "badge":1,
-     "sound":"default",
-     "category":"category1"}
-     }
+    {
+        "aps":{
+            "alert":"Testing.. (34)",
+            "badge":1,
+            "sound":"default",
+            "category":"category1"
+        }
+    }
      */
 }
 
@@ -88,12 +92,14 @@
 {
     //为了给远程推送增加附件，使推送是可变的，需增加字段："mutable-content":1
     /*
-     {
-     "aps":{"alert":"Testing.. (34)",
-     "badge":1,
-     "sound":"default",
-     "mutable-content":1}
-     }
+    {
+        "aps":{
+            "alert":"Testing.. (34)",
+            "badge":1,
+            "sound":"default",
+            "mutable-content":1
+        }
+    }
      */
 }
 

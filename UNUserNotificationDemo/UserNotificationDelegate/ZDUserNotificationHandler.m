@@ -70,7 +70,7 @@
     __unused NSDictionary *userInfo = notification.request.content.userInfo;
     
     //  if you don't want in-app presentation, you just don't pass any parameters.
-    UNNotificationPresentationOptions type = UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert;
+    UNNotificationPresentationOptions type = UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert; // UNNotificationPresentationOptionNone
     completionHandler(type);
 }
 
